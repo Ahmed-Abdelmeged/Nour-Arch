@@ -22,6 +22,7 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.support.v4.app.ActivityCompat
 import android.view.View
+import android.widget.Toolbar
 import com.abdelmeged.ahmed.nourplayerarch.utils.*
 import net.gotev.speech.Speech
 import net.gotev.speech.SpeechDelegate
@@ -46,10 +47,7 @@ class MainActivity : LifecycleActivity(), SuraClickCallbacks, SuraDownloadClickC
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        Speech.init(this)
-        //set the speech language to arabic
-        Speech.getInstance().setLocale(Locale(Constants.LOCALE_ARABIC))
-
+        val speechLifeCycleObserver = SpeechLifeCycleObserver(this, this)
 
         suraViewModel = ViewModelProviders.of(this).get(SuraViewModel::class.java)
 
@@ -192,11 +190,6 @@ class MainActivity : LifecycleActivity(), SuraClickCallbacks, SuraDownloadClickC
             playSuraIntent.putExtra(Constants.EXTRA_SURA, sura)
         }
         startActivity(playSuraIntent)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Speech.getInstance().shutdown()
     }
 }
 

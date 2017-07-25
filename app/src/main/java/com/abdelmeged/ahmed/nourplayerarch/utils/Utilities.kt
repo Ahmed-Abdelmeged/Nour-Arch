@@ -129,7 +129,6 @@ class Utilities {
             surahLoop@ for (entry in Constants.sSurahs.entries) {
                 val s = entry.value
                 for (i in 0..p.size - 1) {
-                    Log.e("s", p[i].toString().substring(1, p[i].toString().length - 1))
                     if (s.contains(p[i].toString().substring(1, p[i].toString().length - 1))) {
                         suarh = entry.key
                         break@surahLoop
