@@ -11,6 +11,7 @@ import com.abdelmeged.ahmed.nourplayerarch.di.AppComponent
 import com.abdelmeged.ahmed.nourplayerarch.service.AudioDownloadService
 import com.abdelmeged.ahmed.nourplayerarch.service.NourService
 import com.abdelmeged.ahmed.nourplayerarch.utils.Constants
+import com.abdelmeged.ahmed.nourplayerarch.utils.QuranIndex
 import io.reactivex.Completable
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -21,7 +22,6 @@ import javax.inject.Inject
  * Created by ahmed on 7/24/2017.
  */
 class SuraRepositoryImpl : SuraRepository {
-
     @Inject
     lateinit var appDatabase: AppDatabase
 
@@ -33,6 +33,10 @@ class SuraRepositoryImpl : SuraRepository {
 
     override fun getSuras(): LiveData<List<Sura>> {
         return appDatabase.suraDao().getAll()
+    }
+
+    override fun getSura(quranIndex: QuranIndex): LiveData<Sura> {
+        return appDatabase.suraDao().getSura(quranIndex)
     }
 
     override fun addSuras(suras: List<Sura>): Completable {

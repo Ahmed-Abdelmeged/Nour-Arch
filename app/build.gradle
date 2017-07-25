@@ -76,4 +76,7 @@ dependencies {
     //Helpers
     compile "com.danikula:videocache:$rootProject.videoCache_version"
     compile "net.gotev:speech:$rootProject.speech_version"
+
+    //Anko
+    compile "org.jetbrains.anko:anko-appcompat-v7-commons:$rootProject.anko_version"
 }

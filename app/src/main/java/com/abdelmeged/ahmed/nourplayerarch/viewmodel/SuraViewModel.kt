@@ -4,22 +4,15 @@ import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
 import android.util.Log
 import com.abdelmeged.ahmed.nourplayerarch.App.NourApp
 import com.abdelmeged.ahmed.nourplayerarch.db.entity.Sura
-import com.abdelmeged.ahmed.nourplayerarch.di.AppComponent
 import com.abdelmeged.ahmed.nourplayerarch.repository.SuraRepository
-import com.abdelmeged.ahmed.nourplayerarch.utils.Constants
+import com.abdelmeged.ahmed.nourplayerarch.utils.QuranIndex
 import io.reactivex.CompletableObserver
-import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import okhttp3.ResponseBody
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import javax.inject.Inject
 
 /**
@@ -54,8 +47,11 @@ class SuraViewModel(application: Application) : AndroidViewModel(application) {
                     override fun onComplete() {
                         Log.e(LOG_TAG, "onComplete - successfully added suras")
                     }
-
                 })
+    }
+
+    fun getSura(quranIndex: QuranIndex): LiveData<Sura> {
+        return suraRepository.getSura(quranIndex)
     }
 
     fun downloadSuras(sura: Sura) {

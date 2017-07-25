@@ -15,25 +15,14 @@ import java.util.*
  */
 class NourApp : Application() {
 
-
     companion object {
         @JvmStatic lateinit var appComponent: AppComponent
     }
-
-    //lateinit var proxy: HttpProxyCacheServer
 
     override fun onCreate() {
         super.onCreate()
         appComponent = DaggerAppComponent.builder()
                 .appModule(AppModule(this))
                 .build()
-        Speech.init(this)
-
-        //set the speech language to arabic
-        Speech.getInstance().setLocale(Locale(Constants.LOCALE_ARABIC))
-
-        /*proxy = HttpProxyCacheServer.Builder(this)
-                .cacheDirectory(FilesUtils.getAudioCacheDirectory(this))
-                .build()*/
     }
 }

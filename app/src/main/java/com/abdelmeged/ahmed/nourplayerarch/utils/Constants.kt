@@ -13,6 +13,7 @@ class Constants {
         /**
          * Key for get the Sura extra intent from the MainActivity
          */
+        const val EXTRA_SURA = "extra-sura";
         const val EXTRA_SURA_DOWNLOAD = "extra-sura-download-id"
         const val MESSAGE_PROGRESS = "message_progress"
 

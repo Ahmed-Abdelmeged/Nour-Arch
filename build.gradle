@@ -36,5 +36,6 @@ ext {
     videoCache_version = "2.7.0"
     speech_version = "1.2.2"
     parcelable_version = "2.0.1"
+    anko_version = "0.10.1"
 }
 

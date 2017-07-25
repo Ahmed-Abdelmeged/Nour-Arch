@@ -23,7 +23,7 @@ data class Sura(
         val suraName: String ,
 
         @ColumnInfo(name = "download_url")
-        val downloadUrl: String
+        var downloadUrl: String
 ):PaperParcelable{
         companion object {
             @JvmField val CREATOR =  PaperParcelSura.CREATOR
